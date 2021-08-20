@@ -14,17 +14,21 @@ function getRandomIntInclusive(min, max) {
 }
 
 for (let i = 0; i < 20; i++) {
-    randomNumber = getRandomIntInclusive(0, 19 - n); 
+    randomNumber = getRandomIntInclusive(0, 19 - n);
     card[i] = `${cardArr[randomNumber]}`;
     cardArr.splice(randomNumber, 1);
     n++;
 }
 
 for (let i = 0; i < 2; i++) {
-    for(let j = 0; j < 10; j++) {
-            main.children[i].children[j].addEventListener('click', function() {
-            main.children[i].children[j].children[0].src = " ";
-            main.children[i].children[j].children[0].src = `../asset/img/${card[(i * 10) + j]}.png`;
+    for (let j = 0; j < 10; j++) {
+        main.children[i].children[j].addEventListener('click', function () {
+            if (num < 2) {
+                main.children[i].children[j].children[0].src = " ";
+                main.children[i].children[j].children[0].src = `../asset/img/${card[(i * 10) + j]}.png`;
+                number[num] = (i * 10) + j;
+                num++;
+            }
         });
     }
 }
