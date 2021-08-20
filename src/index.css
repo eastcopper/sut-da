@@ -21,6 +21,7 @@ body {
 }
 
 img {
+    border-radius: 10px;
     width: 102px;
     height: 158px;
     margin: 10px 5px;
