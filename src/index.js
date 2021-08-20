@@ -17,7 +17,7 @@ function getRandomIntInclusive(min, max) {
 for (let i = 0; i < 20; i++) {
     randomNumber = getRandomIntInclusive(0, 19 - n);
     card[i] = `${cardArr[randomNumber]}`;
-    cardNumber[i] = parseInt(cardArr[randomNumber] / 2); 
+    cardNumber[i] = parseInt((cardArr[randomNumber] + 1) / 2);
     cardArr.splice(randomNumber, 1);
     n++;
 } // card에 숫자 할당
