@@ -1,4 +1,5 @@
 const main = document.getElementById('main');
+const you = document.getElementById('YOU');
 
 let cardArr = [1, 2, 3, 4, 5, 6, 7, 8, 9, 10, 11, 12, 13, 14, 15, 16, 17, 18, 19, 20];
 let n = 0;
@@ -45,24 +46,33 @@ function compare() {
     console.log(number[0]);
     console.log(number[1]);
     if (number[0] == number[1]) {
+        you.innerHTML = `${number[0]}땡!`
         console.log('땡');
     } // 같은 숫자
     else if ((number[0] == 1 || number[1] == 1) && (number[0] == 2 || number[1] == 2)) {
-        console.log('알리');
+        you.innerHTML = "1, 2 알리!";
     } // 1, 2
     else if ((number[0] == 1 || number[1] == 1) && (number[0] == 4 || number[1] == 4)) {
-        console.log('독사');
+        you.innerHTML = "1, 4 독사!";
     } // 1, 4
     else if ((number[0] == 1 || number[1] == 1) && (number[0] == 9 || number[1] == 9)) {
-        console.log('구삥');
+        you.innerHTML = "1, 9 구삥!";
     } // 1, 9
     else if ((number[0] == 1 || number[1] == 1) && (number[0] == 10 || number[1] == 10)) {
-        console.log('장삥');
+        you.innerHTML = "1, 10 장삥!";
     } // 1, 10
     else if ((number[0] == 10 || number[1] == 10) && (number[0] == 4 || number[1] == 4)) {
-        console.log('장사');
+        you.innerHTML = "10, 4 장사!";
     } // 10, 4
     else if ((number[0] == 6 || number[1] == 6) && (number[0] == 4 || number[1] == 4)) {
-        console.log('세륙');
+        you.innerHTML = "6, 4 세륙!";
     } // 6, 4
+    else {
+        if (number[0] + number[1] >= 10) {
+            you.innerHTML = `${(number[0] + number[1]) - 10}끗!`;
+        }
+        else {
+            you.innerHTML = `${number[0] + number[1]}끗!`;
+        }
+    }
 } // 비교

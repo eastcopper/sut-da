@@ -12,12 +12,10 @@ body {
     margin: 0px;
 }
 
-#AI {
+.player {
     height: 175px;
-}
-
-#PLAYER {
-    height: 175px;
+    display: flex;
+    justify-content: center;
 }
 
 img {
