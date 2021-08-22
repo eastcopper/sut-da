@@ -28,6 +28,9 @@ for (let i = 0; i < 2; i++) {
         main.children[i].children[j].addEventListener('mouseover', function () {
             main.children[i].children[j].classList.add("increase");
         })
+        main.children[i].children[j].addEventListener('mouseleave', function () {
+            main.children[i].children[j].classList.remove("increase");
+        })
         main.children[i].children[j].addEventListener('click', function () { // 카드를 눌렀을 때
             if (num < 2) {
                 main.children[i].children[j].children[0].src = " ";
