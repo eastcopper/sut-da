@@ -27,10 +27,10 @@ for (let i = 0; i < 2; i++) {
     for (let j = 0; j < 10; j++) {
         main.children[i].children[j].addEventListener('mouseover', function () {
             main.children[i].children[j].classList.add("increase");
-        })
+        }) // 마우스를 올려놨을 때 크기 증가
         main.children[i].children[j].addEventListener('mouseleave', function () {
             main.children[i].children[j].classList.remove("increase");
-        })
+        }) // 마우스를 땠을 때 크기 감소
         main.children[i].children[j].addEventListener('click', function () { // 카드를 눌렀을 때
             if (num < 2) {
                 main.children[i].children[j].children[0].src = " ";
@@ -49,8 +49,6 @@ for (let i = 0; i < 2; i++) {
 }
 
 function compare() {
-    console.log(number[0]);
-    console.log(number[1]);
     if (number[0] == number[1]) {
         you.innerHTML = `${number[0]}땡!`
         console.log('땡');
@@ -76,9 +74,9 @@ function compare() {
     else {
         if (number[0] + number[1] >= 10) {
             you.innerHTML = `${(number[0] + number[1]) - 10}끗!`;
-        }
+        } // 두 수의 합이 10보다 클 때
         else {
             you.innerHTML = `${number[0] + number[1]}끗!`;
-        }
-    }
+        } // 두 수의 합이 10보다 작을 때
+    } // 끗
 } // 비교
