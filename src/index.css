@@ -24,3 +24,7 @@ img {
     height: 158px;
     margin: 10px 5px;
 }
+
+.increase {
+    transform: scale(1.10);
+}
