@@ -1,13 +1,17 @@
 const main = document.getElementById('main');
 const you = document.getElementById('YOU');
 
-let cardArr = [1, 2, 3, 4, 5, 6, 7, 8, 9, 10, 11, 12, 13, 14, 15, 16, 17, 18, 19, 20];
+let cardArr = [];
 let n = 0;
 let card = [];
 let randomNumber;
 let cardNumber = [];
 let num = 0;
 let number = [];
+
+for (let i = 1; i <= 20; i++) {
+    cardArr.push(i);
+}
 
 function getRandomIntInclusive(min, max) {
     min = Math.ceil(min);
@@ -32,7 +36,7 @@ for (let i = 0; i < 2; i++) {
             main.children[i].children[j].classList.remove("increase");
         }) // 마우스를 땠을 때 크기 감소
         main.children[i].children[j].addEventListener('click', function () { // 카드를 눌렀을 때
-            if (num < 2) {
+            if (num < 100) {
                 main.children[i].children[j].children[0].src = " ";
                 main.children[i].children[j].children[0].src = `../asset/img/${card[(i * 10) + j]}.png`; // 이미지 생성
                 number[num] = cardNumber[(i * 10) + j];
