@@ -2,6 +2,10 @@
     display: inline-flex;
 }
 
+.floor > div {
+    transition: all .1s ease;
+}
+
 main {
     display: flex;  
     flex-direction: column;
