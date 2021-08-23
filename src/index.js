@@ -41,13 +41,12 @@ for (let i = 0; i < 2; i++) {
         main.children[i].children[j].addEventListener('click', function (event) { // 카드를 눌렀을 때
             if (num < 2) {
                 let elem = event.currentTarget;
-                if (elem.style.transform == "rotateY(0deg)") {
+                if (elem.style.transform != "rotateY(180deg)") {
                     elem.style.transform = "rotateY(180deg)";
-                } else {
-                    elem.style.transform = "rotateY(180deg)";
-                } // 카드 돌리기 애니메이션
+                }  // 카드 돌리기 애니메이션
                 main.children[i].children[j].children[0].children[0].src = `../asset/img/${card[(i * 10) + j]}.png`; // 이미지 생성
                 main.children[i].children[j].children[0].style.animationName = "move";
+                
                 number[num] = cardNumber[(i * 10) + j];
                 num++;
                 if (num == 2) {
