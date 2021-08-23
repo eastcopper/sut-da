@@ -30,15 +30,21 @@ for (let i = 0; i < 20; i++) {
 for (let i = 0; i < 2; i++) {
     for (let j = 0; j < 10; j++) {
         main.children[i].children[j].addEventListener('mouseover', function () {
-            main.children[i].children[j].classList.add("increase");
+            main.children[i].children[j].children[1].classList.add("increase");
         }) // 마우스를 올려놨을 때 크기 증가
         main.children[i].children[j].addEventListener('mouseleave', function () {
-            main.children[i].children[j].classList.remove("increase");
+            main.children[i].children[j].children[1].classList.remove("increase");
         }) // 마우스를 땠을 때 크기 감소
-        main.children[i].children[j].addEventListener('click', function () { // 카드를 눌렀을 때
+        main.children[i].children[j].addEventListener('click', function (event) { // 카드를 눌렀을 때
             if (num < 2) {
+                let elem = event.currentTarget;
+                if (elem.style.transform == "rotateY(180deg)") {
+                    elem.style.transform = "rotateY(0deg)";
+                } else {
+                    elem.style.transform = "rotateY(180deg)";
+                }
                 main.children[i].children[j].children[0].src = " ";
-                main.children[i].children[j].children[0].src = `../asset/img/${card[(i * 10) + j]}.png`; // 이미지 생성
+                main.children[i].children[j].children[0].children[0].src = `../asset/img/${card[(i * 10) + j]}.png`; // 이미지 생성
                 number[num] = cardNumber[(i * 10) + j];
                 num++;
                 if (num == 2) {
