@@ -47,6 +47,7 @@ for (let i = 0; i < 2; i++) {
                     elem.style.transform = "rotateY(180deg)";
                 } // 카드 돌리기 애니메이션
                 main.children[i].children[j].children[0].children[0].src = `../asset/img/${card[(i * 10) + j]}.png`; // 이미지 생성
+                main.children[i].children[j].children[0].style.animationName = "move";
                 number[num] = cardNumber[(i * 10) + j];
                 num++;
                 if (num == 2) {
