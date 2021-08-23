@@ -25,6 +25,7 @@ for (let i = 0; i < 20; i++) {
     randomNumber = getRandomIntInclusive(0, 19 - n);
     card[i] = `${cardArr[randomNumber]}`;
     cardNumber[i] = parseInt(cardArr[randomNumber]);
+    console.log(cardNumber[i]);
     cardArr.splice(randomNumber, 1);
     n++;
 } // card에 숫자 할당
@@ -69,11 +70,19 @@ function compare() {
         you.innerHTML = "일삼광땡!";
         point += 26;
     } // 1월 광, 3월 광
+    else if ((number[0] == 5 || number[1] == 5) && ((number[0] == 13 || number[0] == 14) || (number[1] == 13 || number[1] == 14))) {
+        you.innerHTML = "땡잡이!";
+    }
     else {
         number[0] = parseInt((number[0] + 1) / 2);
         number[1] = parseInt((number[1] + 1) / 2); // 10이하 값으로 변환
         if (number[0] == number[1]) {
-            you.innerHTML = `${number[0]}땡!`
+            if (number[0] == 10) {
+                you.innerHTML = "장땡!";
+            }
+            else  {
+                you.innerHTML = `${number[0]}땡!`;
+            }
             youPoint += (15 + number[0]);
         } // 두 수의 값이 같을 때
         else if ((number[0] == 1 || number[1] == 1) && (number[0] == 2 || number[1] == 2)) {
@@ -100,10 +109,21 @@ function compare() {
             you.innerHTML = "세륙!";
             youPoint += 10;
         } // 6월 , 4월 
+        else if ((number[0] == 4 || number[1] == 4) && (number[0] == 7 || number[1] == 7)) {
+            you.innerHTML = "암행어사!";
+        }
+        else if ((number[0] == 4 || number[1] == 4) && (number[0] == 9 || number[1] == 9)) {
+            you.innerHTML = "구사!";
+        }
         else {
             if (number[0] + number[1] >= 10) {
-                you.innerHTML = `${(number[0] + number[1]) - 10}끗!`;
-                youPoint += (number[0] + number[1] - 10)
+                if ((number[0] + number - 10) == 0) {
+                    you.innerHTML = "망통!";
+                }
+                else  {
+                    you.innerHTML = `${(number[0] + number[1]) - 10}끗!`;
+                }
+                youPoint += (number[0] + number[1] - 10);
             } // 두 수의 합이 10보다 클 때
             else {
                 you.innerHTML = `${number[0] + number[1]}끗!`;
