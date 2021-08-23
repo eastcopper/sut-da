@@ -13,7 +13,7 @@ let aiPoint = 0;
 
 for (let i = 1; i <= 20; i++) {
     cardArr.push(i);
-}
+} // 카드 배열
 
 function getRandomIntInclusive(min, max) {
     min = Math.ceil(min);
@@ -44,8 +44,7 @@ for (let i = 0; i < 2; i++) {
                     elem.style.transform = "rotateY(180deg)";
                 } else {
                     elem.style.transform = "rotateY(180deg)";
-                }
-                main.children[i].children[j].children[0].src = " ";
+                } // 카드 돌리기 애니메이션
                 main.children[i].children[j].children[0].children[0].src = `../asset/img/${card[(i * 10) + j]}.png`; // 이미지 생성
                 number[num] = cardNumber[(i * 10) + j];
                 num++;
@@ -61,53 +60,55 @@ function compare() {
     if ((number[0] == 5 || number[1] == 5) && (number[0] == 15 || number[1] == 15)) {
         you.innerHTML = "삼팔광땡!";
         point += 28;
-    }
+    } // 3월 광, 8월 광
     else if ((number[0] == 1 || number[1] == 1) && (number[0] == 15 || number[1] == 15)) {
         you.innerHTML = "일팔광땡!";
         point += 27;
-    }
+    } // 1월 광, 8월 광
     else if ((number[0] == 1 || number[1] == 1) && (number[0] == 5 || number[1] == 5)) {
         you.innerHTML = "일삼광땡!";
         point += 26;
-    }
-    number[0] = parseInt((number[0] + 1) / 2);
-    number[1] = parseInt((number[1] + 1) / 2);
-    if (number[0] == number[1]) {
-        you.innerHTML = `${number[0]}땡!`
-        youPoint += (15 + number[0]);
-    }
-    else if ((number[0] == 1 || number[1] == 1) && (number[0] == 2 || number[1] == 2)) {
-        you.innerHTML = "알리!";
-        youPoint += 15;
-    } // 1, 2
-    else if ((number[0] == 1 || number[1] == 1) && (number[0] == 4 || number[1] == 4)) {
-        you.innerHTML = "독사!";
-        youPoint += 14;
-    } // 1, 4
-    else if ((number[0] == 1 || number[1] == 1) && (number[0] == 9 || number[1] == 9)) {
-        you.innerHTML = "구삥!";
-        youPoint += 13;
-    } // 1, 9
-    else if ((number[0] == 1 || number[1] == 1) && (number[0] == 10 || number[1] == 10)) {
-        you.innerHTML = "장삥!";
-        youPoint += 12;
-    } // 1, 10
-    else if ((number[0] == 10 || number[1] == 10) && (number[0] == 4 || number[1] == 4)) {
-        you.innerHTML = "장사!";
-        youPoint += 11;
-    } // 10, 4
-    else if ((number[0] == 6 || number[1] == 6) && (number[0] == 4 || number[1] == 4)) {
-        you.innerHTML = "세륙!";
-        youPoint += 10;
-    } // 6, 4
+    } // 1월 광, 3월 광
     else {
-        if (number[0] + number[1] >= 10) {
-            you.innerHTML = `${(number[0] + number[1]) - 10}끗!`;
-            youPoint += (number[0] + number[1] - 10)
-        } // 두 수의 합이 10보다 클 때
+        number[0] = parseInt((number[0] + 1) / 2);
+        number[1] = parseInt((number[1] + 1) / 2); // 10이하 값으로 변환
+        if (number[0] == number[1]) {
+            you.innerHTML = `${number[0]}땡!`
+            youPoint += (15 + number[0]);
+        } // 두 수의 값이 같을 때
+        else if ((number[0] == 1 || number[1] == 1) && (number[0] == 2 || number[1] == 2)) {
+            you.innerHTML = "알리!";
+            youPoint += 15;
+        } // 1월 , 2월 
+        else if ((number[0] == 1 || number[1] == 1) && (number[0] == 4 || number[1] == 4)) {
+            you.innerHTML = "독사!";
+            youPoint += 14;
+        } // 1월 , 4월 
+        else if ((number[0] == 1 || number[1] == 1) && (number[0] == 9 || number[1] == 9)) {
+            you.innerHTML = "구삥!";
+            youPoint += 13;
+        } // 1월 , 9월 
+        else if ((number[0] == 1 || number[1] == 1) && (number[0] == 10 || number[1] == 10)) {
+            you.innerHTML = "장삥!";
+            youPoint += 12;
+        } // 1월 , 10월 
+        else if ((number[0] == 10 || number[1] == 10) && (number[0] == 4 || number[1] == 4)) {
+            you.innerHTML = "장사!";
+            youPoint += 11;
+        } // 10월 , 4월 
+        else if ((number[0] == 6 || number[1] == 6) && (number[0] == 4 || number[1] == 4)) {
+            you.innerHTML = "세륙!";
+            youPoint += 10;
+        } // 6월 , 4월 
         else {
-            you.innerHTML = `${number[0] + number[1]}끗!`;
-            youPoint += (number[0] + number[1]);
-        } // 두 수의 합이 10보다 작을 때
-    } // 끗
+            if (number[0] + number[1] >= 10) {
+                you.innerHTML = `${(number[0] + number[1]) - 10}끗!`;
+                youPoint += (number[0] + number[1] - 10)
+            } // 두 수의 합이 10보다 클 때
+            else {
+                you.innerHTML = `${number[0] + number[1]}끗!`;
+                youPoint += (number[0] + number[1]);
+            } // 두 수의 합이 10보다 작을 때
+        } // 끗
+    }
 } // 비교
