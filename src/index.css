@@ -1,6 +1,6 @@
 .floor {
     display: inline-flex;
-    margin-bottom: 170px;
+    margin: 85px 0px;
 }
 
 .floor > div > div {
@@ -10,7 +10,7 @@
 main {
     display: flex;  
     flex-direction: column;
-    margin-left: 12%;
+    margin-left: 100px;
 }
 
 body {
@@ -18,7 +18,7 @@ body {
 }
 
 .player {
-    height: 175px;
+    height: 190px;
     display: flex;
     justify-content: center;
 }
