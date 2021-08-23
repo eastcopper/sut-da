@@ -36,7 +36,7 @@ for (let i = 0; i < 2; i++) {
             main.children[i].children[j].classList.remove("increase");
         }) // 마우스를 땠을 때 크기 감소
         main.children[i].children[j].addEventListener('click', function () { // 카드를 눌렀을 때
-            if (num < 100) {
+            if (num < 2) {
                 main.children[i].children[j].children[0].src = " ";
                 main.children[i].children[j].children[0].src = `../asset/img/${card[(i * 10) + j]}.png`; // 이미지 생성
                 number[num] = cardNumber[(i * 10) + j];
