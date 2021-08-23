@@ -40,8 +40,8 @@ for (let i = 0; i < 2; i++) {
         main.children[i].children[j].addEventListener('click', function (event) { // 카드를 눌렀을 때
             if (num < 2) {
                 let elem = event.currentTarget;
-                if (elem.style.transform == "rotateY(180deg)") {
-                    elem.style.transform = "rotateY(0deg)";
+                if (elem.style.transform == "rotateY(0deg)") {
+                    elem.style.transform = "rotateY(180deg)";
                 } else {
                     elem.style.transform = "rotateY(180deg)";
                 }
@@ -53,45 +53,54 @@ for (let i = 0; i < 2; i++) {
                     compare();
                 }
             } // 두 번만
-            else {
-                compare();
-            }
         });
     }
 }
 
 function compare() {
+    if ((number[0] == 5 || number[1] == 5) && (number[0] == 15 || number[1] == 15)) {
+        you.innerHTML = "삼팔광땡!";
+        point += 28;
+    }
+    else if ((number[0] == 1 || number[1] == 1) && (number[0] == 15 || number[1] == 15)) {
+        you.innerHTML = "일팔광땡!";
+        point += 27;
+    }
+    else if ((number[0] == 1 || number[1] == 1) && (number[0] == 5 || number[1] == 5)) {
+        you.innerHTML = "일삼광땡!";
+        point += 26;
+    }
+    number[0] = parseInt((number[0] + 1) / 2);
+    number[1] = parseInt((number[1] + 1) / 2);
     if (number[0] == number[1]) {
         you.innerHTML = `${number[0]}땡!`
         youPoint += (15 + number[0]);
-    } // 같은 숫자
-    else if (((number[0] == 1 || number[0] == 2) || (number[1] == 1 || number[1] == 2)) && ((number[0] == 3 || number[0] == 4) || (number[1] == 3 || number[1] == 4))) {
+    }
+    else if ((number[0] == 1 || number[1] == 1) && (number[0] == 2 || number[1] == 2)) {
         you.innerHTML = "알리!";
         youPoint += 15;
     } // 1, 2
-    else if (((number[0] == 1 || number[0] == 2) || (number[1] == 1 || number[1] == 2)) && ((number[0] == 7 || number[0] == 8) || (number[1] == 7 || number[1] == 8))) {
+    else if ((number[0] == 1 || number[1] == 1) && (number[0] == 4 || number[1] == 4)) {
         you.innerHTML = "독사!";
         youPoint += 14;
     } // 1, 4
-    else if (((number[0] == 1 || number[0] == 2) || (number[1] == 1 || number[1] == 2)) && ((number[0] == 17 || number[0] == 18) || (number[0] == 17 || number[0] == 18))) {
+    else if ((number[0] == 1 || number[1] == 1) && (number[0] == 9 || number[1] == 9)) {
         you.innerHTML = "구삥!";
         youPoint += 13;
     } // 1, 9
-    else if (((number[0] == 1 || number[0] == 2) || (number[1] == 1 || number[1] == 2)) && ((number[0] == 19 || number[0] == 20) || (number[1] == 19 || number[1] == 20))) {
+    else if ((number[0] == 1 || number[1] == 1) && (number[0] == 10 || number[1] == 10)) {
         you.innerHTML = "장삥!";
         youPoint += 12;
     } // 1, 10
-    else if (((number[0] == 19 || number[0] == 20) || (number[1] == 19 || number[1] == 20)) && ((number[0] == 7 || number[0] == 8) || (number[1] == 7 || number[1] == 8))) {
+    else if ((number[0] == 10 || number[1] == 10) && (number[0] == 4 || number[1] == 4)) {
         you.innerHTML = "장사!";
         youPoint += 11;
     } // 10, 4
-    else if (((number[0] == 11 || number[0] == 12) || (number[1] == 11 || number[1] == 12)) && ((number[0] == 7 || number[0] == 8) || (number[1] == 7 || number[1] == 8))) {
+    else if ((number[0] == 6 || number[1] == 6) && (number[0] == 4 || number[1] == 4)) {
         you.innerHTML = "세륙!";
         youPoint += 10;
     } // 6, 4
     else {
-        number[0] = parseInt((number[0] + 1) / 2);
-        number[1] = parseInt((number[1] + 1) / 2);
         if (number[0] + number[1] >= 10) {
             you.innerHTML = `${(number[0] + number[1]) - 10}끗!`;
             youPoint += (number[0] + number[1] - 10)
