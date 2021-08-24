@@ -6,12 +6,16 @@ let n = 0;
 let card = [];
 let randomNumber;
 let cardNumber = [];
+let speedY = [];
+let speedX = [];
 let num = 0;
 let number = [];
 let youPoint = 0;
 let aiPoint = 0;
 
 for (let i = 1; i <= 20; i++) {
+    speedX[i - 1] = 0;
+    speedY[i - 1] = 0;
     cardArr.push(i);
 } // 카드 배열
 
@@ -44,9 +48,9 @@ for (let i = 0; i < 2; i++) {
                 if (elem.style.transform != "rotateY(180deg)") {
                     elem.style.transform = "rotateY(180deg)";
                 }  // 카드 돌리기 애니메이션
+                cardPosition = main.children[i].children[j].children[0];
                 main.children[i].children[j].children[0].children[0].src = `../asset/img/${card[(i * 10) + j]}.png`; // 이미지 생성
-                main.children[i].children[j].children[0].style.animationName = "move";
-                
+                cardMove(i, j);
                 number[num] = cardNumber[(i * 10) + j];
                 num++;
                 if (num == 2) {
@@ -55,6 +59,26 @@ for (let i = 0; i < 2; i++) {
             } // 두 번만
         });
     }
+}
+
+function cardMove(i, j) {
+    setTimeout(function() {
+        setInterval(function () {
+            if (i == 1) {
+                if (speedY[i * 10 + j] >= -160) {
+                    main.children[i].children[j].children[0].style.bottom = `${speedY[i * 10 + j]}px`;
+                }
+                speedY[i * 10 + j] -= 20;
+            }
+            else {
+                if (speedY[i * 10 + j] >= -330) {
+                    main.children[i].children[j].children[0].style.bottom = `${speedY[i * 10 + j]}px`;
+                }
+                speedY[i * 10 + j] -= 30;
+            }
+        }, 50);
+      }, 1000);
+    
 }
 
 function compare() {
@@ -80,7 +104,7 @@ function compare() {
             if (number[0] == 10) {
                 you.innerHTML = "장땡!";
             }
-            else  {
+            else {
                 you.innerHTML = `${number[0]}땡!`;
             }
             youPoint += (15 + number[0]);
@@ -120,7 +144,7 @@ function compare() {
                 if ((number[0] + number - 10) == 0) {
                     you.innerHTML = "망통!";
                 }
-                else  {
+                else {
                     you.innerHTML = `${(number[0] + number[1]) - 10}끗!`;
                 }
                 youPoint += (number[0] + number[1] - 10);
