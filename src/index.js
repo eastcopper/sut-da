@@ -50,7 +50,7 @@ for (let i = 0; i < 2; i++) {
                 }  // 카드 돌리기 애니메이션
                 cardPosition = main.children[i].children[j].children[0];
                 main.children[i].children[j].children[0].children[0].src = `../asset/img/${card[(i * 10) + j]}.png`; // 이미지 생성
-                cardMove(i, j);
+                cardMove(i, j, num);
                 number[num] = cardNumber[(i * 10) + j];
                 num++;
                 if (num == 2) {
@@ -61,20 +61,40 @@ for (let i = 0; i < 2; i++) {
     }
 }
 
-function cardMove(i, j) {
+function cardMove(i, j, num) {
     setTimeout(function() {
         setInterval(function () {
             if (i == 1) {
-                if (speedY[i * 10 + j] >= -160) {
+                if (speedY[i * 10 + j] >= -170) {
                     main.children[i].children[j].children[0].style.bottom = `${speedY[i * 10 + j]}px`;
+                    speedY[i * 10 + j] -= 20;
                 }
-                speedY[i * 10 + j] -= 20;
             }
             else {
-                if (speedY[i * 10 + j] >= -330) {
+                if (speedY[i * 10 + j] >= -340) {
                     main.children[i].children[j].children[0].style.bottom = `${speedY[i * 10 + j]}px`;
+                    speedY[i * 10 + j] -= 30;
                 }
-                speedY[i * 10 + j] -= 30;
+            }
+            if (j <= 3) {
+                if (num == 0) {
+                    if (speedX[i * 10 + j] <= 480 - (j * 120)) {
+                        main.children[i].children[j].children[0].style.right = `${speedX[i * 10 + j]}px`;
+                        speedX[i * 10 + j] += 48 - (j * 12);
+                    }  
+                }           
+                else {
+                    if (speedX[i * 10 + j] <= 600 - (j * 120)) {
+                        main.children[i].children[j].children[0].style.right = `${speedX[i * 10 + j]}px`;
+                        speedX[i * 10 + j] += 60 - (j * 12);
+                    } 
+                }   
+            }
+            else if (j == 4 || j == 5) {
+
+            }
+            else {
+                
             }
         }, 50);
       }, 1000);
