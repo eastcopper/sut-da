@@ -78,27 +78,21 @@ function cardMove(i, j, num) {
             }
             if (j <= 3) {
                 if (num == 0) {
-                    if (speedX[i * 10 + j] <= 480 - (j * 120)) {
-                        main.children[i].children[j].children[0].style.right = `${speedX[i * 10 + j]}px`;
-                        speedX[i * 10 + j] += 48 - (j * 12);
-                    }  
+                     rightMove(i, j, num);
                 }           
                 else {
-                    if (speedX[i * 10 + j] <= 600 - (j * 120)) {
-                        main.children[i].children[j].children[0].style.right = `${speedX[i * 10 + j]}px`;
-                        speedX[i * 10 + j] += 60 - (j * 12);
-                    }
+                    rightMove(i, j, num);
                 }   
             }
             else if (j == 4 || j == 5) {
                 if (num == 0) {
-                    if (speedX[i * 10 + j] <= 120 * (j - 4)) {
+                    if (speedX[i * 10 + j] <= 120 * (j - (4 + num))) {
                         main.children[i].children[j].children[0].style.left = `${speedX[i * 10 + j]}px`;
                         speedX[i * 10 + j] += 12;
                     }  
                 }
                 else {
-                    if (speedX[i * 10 + j] <= 120 * -(j - 5)) {
+                    if (speedX[i * 10 + j] <= 120 * -(j - (4 + num))) {
                         main.children[i].children[j].children[0].style.right = `${speedX[i * 10 + j]}px`;
                         speedX[i * 10 + j] += 12;
                     }  
@@ -106,16 +100,10 @@ function cardMove(i, j, num) {
             }
             else {
                 if (num == 0) {
-                    if (speedX[i * 10 + j] <= (j - 4) * 120) {
-                        main.children[i].children[j].children[0].style.left = `${speedX[i * 10 + j]}px`;
-                        speedX[i * 10 + j] += 24 + ((j - 6) * 12);
-                    }   
+                    leftMove(i, j, num);
                 }
                 else {
-                    if (speedX[i * 10 + j] <= (j - 5) * 120) {
-                        main.children[i].children[j].children[0].style.left = `${speedX[i * 10 + j]}px`;
-                        speedX[i * 10 + j] += 12 + ((j - 6) * 12);
-                    }   
+                    leftMove(i, j, num);
                 }
             }
         }, 50);
@@ -198,3 +186,18 @@ function compare() {
         } // 끗
     }
 } // 비교
+
+function rightMove(a, b, c) {
+    if (speedX[a * 10 + b] <= 480 + (120 * c) - (b * 120)) {
+        main.children[a].children[b].children[0].style.right = `${speedX[a * 10 + b]}px`;
+        speedX[a * 10 + b] += 48 + (12 * c) - (b * 12);
+    }
+}
+
+function leftMove(a, b, c) {
+    console.log(a, b, c);
+    if (speedX[a * 10 + b] <= (b - (4 + c)) * 120) {
+        main.children[a].children[b].children[0].style.left = `${speedX[a * 10 + b]}px`;
+        speedX[a * 10 + b] += (24 -(12 * c)) + ((b - 6) * 12);
+    }
+}
