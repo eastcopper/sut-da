@@ -69,27 +69,27 @@ function cardMove(i, j, num) {
                     main.children[i].children[j].children[0].style.bottom = `${speedY[i * 10 + j]}px`;
                     speedY[i * 10 + j] -= 18;
                 }
-            }
+            } // 첫째 줄 카드 아래 이동
             else {
                 if (speedY[i * 10 + j] >= -350) {
                     main.children[i].children[j].children[0].style.bottom = `${speedY[i * 10 + j]}px`;
                     speedY[i * 10 + j] -= 35;
                 }
-            }
+            } // 둘째 줄 카드 아래 이동
             if (j <= 3) {
                 rightMove(i, j, num);
-            }
+            } // 왼쪽에 있는 카드 오른쪽으로 이동
             else if (j == 4 || j == 5) {
                 if (num == 0) {
                     leftMove(i, j, num);
-                }
+                }// 오른쪽에 있는 카드 왼쪽으로 이동
                 else {
                     rightMove(i, j, num);
-                }
+                }// 왼쪽에 있는 카드 오른쪽으로 이동
             }
             else {
                 leftMove(i, j, num);
-            }
+            } // 오른쪽에 있는 카드 왼쪽으로 이동
         }, 50);
     }, 1000);
 
@@ -117,7 +117,7 @@ function compare() {
         if (number[0] == number[1]) {
             if (number[0] == 10) {
                 you.innerHTML = "장땡!";
-            }
+            } // 10월 두개
             else {
                 you.innerHTML = `${number[0]}땡!`;
             }
@@ -149,15 +149,15 @@ function compare() {
         } // 6월 , 4월 
         else if ((number[0] == 4 || number[1] == 4) && (number[0] == 7 || number[1] == 7)) {
             you.innerHTML = "암행어사!";
-        }
+        } // 4월, 7월
         else if ((number[0] == 4 || number[1] == 4) && (number[0] == 9 || number[1] == 9)) {
             you.innerHTML = "구사!";
-        }
+        } // 9월, 4월
         else {
             if (number[0] + number[1] >= 10) {
                 if ((number[0] + number - 10) == 0) {
                     you.innerHTML = "망통!";
-                }
+                } // 두 수의 합이 0일 때
                 else {
                     you.innerHTML = `${(number[0] + number[1]) - 10}끗!`;
                 }
@@ -177,14 +177,13 @@ function rightMove(a, b, c) {
             main.children[a].children[b].children[0].style.right = `${speedX[a * 10 + b]}px`;
             speedX[a * 10 + b] += 48 + (12 * c) - (b * 12);
         }
-    }
+    } // 왼쪽에 있는 카드일 때
     else {
         if (speedX[a * 10 + b] <= 120 * -(b - (4 + c))) {
             main.children[a].children[b].children[0].style.right = `${speedX[a * 10 + b]}px`;
             speedX[a * 10 + b] += 12;
         }
-    }
-
+    } // 중앙에 있는 카드일 때
 }
 
 function leftMove(a, b, c) {
@@ -194,11 +193,11 @@ function leftMove(a, b, c) {
             main.children[a].children[b].children[0].style.left = `${speedX[a * 10 + b]}px`;
             speedX[a * 10 + b] += (24 - (12 * c)) + ((b - 6) * 12);
         }
-    }
+    } // 오른쪽에 있는 카드 일 때
     else {
         if (speedX[a * 10 + b] <= 120 * (b - (4 + c))) {
             main.children[a].children[b].children[0].style.left = `${speedX[a * 10 + b]}px`;
             speedX[a * 10 + b] += 12;
         }
-    }
+    } // 중앙에 있는 카드 일 때
 }
