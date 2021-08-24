@@ -105,7 +105,18 @@ function cardMove(i, j, num) {
                 }
             }
             else {
-                
+                if (num == 0) {
+                    if (speedX[i * 10 + j] <= (j - 4) * 120) {
+                        main.children[i].children[j].children[0].style.left = `${speedX[i * 10 + j]}px`;
+                        speedX[i * 10 + j] += 24 + ((j - 6) * 12);
+                    }   
+                }
+                else {
+                    if (speedX[i * 10 + j] <= (j - 5) * 120) {
+                        main.children[i].children[j].children[0].style.left = `${speedX[i * 10 + j]}px`;
+                        speedX[i * 10 + j] += 12 + ((j - 6) * 12);
+                    }   
+                }
             }
         }, 50);
       }, 1000);
