@@ -65,15 +65,15 @@ function cardMove(i, j, num) {
     setTimeout(function() {
         setInterval(function () {
             if (i == 1) {
-                if (speedY[i * 10 + j] >= -170) {
+                if (speedY[i * 10 + j] >= -180) {
                     main.children[i].children[j].children[0].style.bottom = `${speedY[i * 10 + j]}px`;
-                    speedY[i * 10 + j] -= 20;
+                    speedY[i * 10 + j] -= 18;
                 }
             }
             else {
-                if (speedY[i * 10 + j] >= -340) {
+                if (speedY[i * 10 + j] >= -350) {
                     main.children[i].children[j].children[0].style.bottom = `${speedY[i * 10 + j]}px`;
-                    speedY[i * 10 + j] -= 30;
+                    speedY[i * 10 + j] -= 35;
                 }
             }
             if (j <= 3) {
@@ -87,11 +87,22 @@ function cardMove(i, j, num) {
                     if (speedX[i * 10 + j] <= 600 - (j * 120)) {
                         main.children[i].children[j].children[0].style.right = `${speedX[i * 10 + j]}px`;
                         speedX[i * 10 + j] += 60 - (j * 12);
-                    } 
+                    }
                 }   
             }
             else if (j == 4 || j == 5) {
-
+                if (num == 0) {
+                    if (speedX[i * 10 + j] <= 120 * (j - 4)) {
+                        main.children[i].children[j].children[0].style.left = `${speedX[i * 10 + j]}px`;
+                        speedX[i * 10 + j] += 12;
+                    }  
+                }
+                else {
+                    if (speedX[i * 10 + j] <= 120 * -(j - 5)) {
+                        main.children[i].children[j].children[0].style.right = `${speedX[i * 10 + j]}px`;
+                        speedX[i * 10 + j] += 12;
+                    }  
+                }
             }
             else {
                 
