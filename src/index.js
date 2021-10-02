@@ -1,5 +1,6 @@
 const main = document.getElementById('main');
 const you = document.getElementById('YOU');
+const oneFloor = document.getElementById('oneFloor');
 
 let cardArr = [];
 let n = 0;
